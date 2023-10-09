@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetchapi</title>
+    
+</head>
+<style>
+#appenddata{
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+}
+</style>
+<body>
+    <h2>hello requester</h2>
+    <div id="appenddata"></div>
+</body>
+</html>
+<script>
+    let url='https://reqres.in/api/users?page=2'
+    let main=document.getElementById('appenddata');
+    console.log(main)
+    fetch(url)
+    .then(function(responce)
+    {
+        return responce.json()
+    })
+    .then(function(res)
+    {console.log(res);
+        let result=res.data;
+        //console.log(result);
+        appenddata(result)
+      //  console.log(result);
+    })
+    .catch(function(err)
+    {
+        console.log(err);
+    })
+   
+    function appenddata(result)
+    {
+       // console.log(result);
+        result.map(function(user){
+           // console.log(user);
+             let div=document.createElement('div')
+              let img=document.createElement('img')
+              img.src=user.avatar;
+              let name=document.createElement('p')
+              name.innerHTML=`${user.first_name} ${user.last_name}`
+              let email=document.createElement('p')
+              email.innerHTML=user.email;
+              div.append(img,name,email)
+              main.append(div)
+        })
+    }
+
+   
+                
+    
+</script>

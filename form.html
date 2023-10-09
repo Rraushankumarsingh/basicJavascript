@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+    <div id="loader"></div>
+    <div id="success"></div>
+    <div>
+        <label>name</label>
+        <br>
+        <input type="text" placeholder="enter a account number">
+        <br>
+        <label for="">cvv no</label>
+        <br>
+        <input type="text" placeholder="enter cvv number">
+        <br>
+        <button onclick="formSubmit()">submit</button>
+    </div>
+</body>
+<script>
+    
+    function formSubmit()
+    {
+      //  alert("loading")
+       setTimeout(payment,5000)
+       {
+        let success=document.getElementById("success")
+            success.innerHTML="loading"
+       }
+       
+        function payment()
+        {
+            let success=document.getElementById("success")
+            success.innerHTML="payment successfull"
+        }
+       
+    }
+</script>
+</html>

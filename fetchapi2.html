@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetchapi2</title>
+</head>
+<style>
+    #aapiData{
+        display: grid;
+        grid-template-columns: repeat(4, 20%);
+    }
+    </style>
+<body>
+    <h2>requester data</h2>
+    <div id="apiData"></div>
+</body>
+</html>
+<script>
+    let url='https://fakestoreapi.com/products'
+   // console.log(url);
+    let main=document.getElementById('apiData')
+    
+
+    fetch(url)
+    .then((responce)=>{
+       return  responce.json()
+    })
+    .then((user)=>{
+       
+         let result=user;
+        responceData(result)
+         
+    })
+    .catch((err)=>
+    {
+        console.log(err);
+    })
+
+    function responceData(result)
+    {
+        //console.log(result)
+        result.map((userdata)=>
+           {
+            //console.log("userdata",userdata)
+            let div=document.createElement('div')
+            let img=document.createElement('img')
+            img.src=userdata.image;
+            let price=document.createElement('p')
+            price.innerHTML=userdata.price;
+            let dec=document.createElement('p')
+            dec.innerHTML=userdata.description;
+
+            div.append(img,price,dec)
+                    main.append(div)
+
+           })
+
+    }
+</script>
+<!-- <script>
+
+    let url= 'https://fakestoreapi.com/products'
+    let main=document.getElementById("apiData")
+    fetch(url)
+    .then((responce)=>{
+        return responce.json()
+    })
+    .then((dataresponce)=> {   
+        console.log(dataresponce);
+        
+        dataresponce.map((user)=>{
+            console.log(user);
+            let div=document.createElement('div')
+             let img=document.createElement('img')
+             img.src=user.image;
+             let price=document.createElement('p')
+             price.innerHTML=user.price;
+             let dec=document.createElement('p')
+             dec.innerHTML=description;
+             div.append(img,price,dec)
+             main.append(div)
+        })
+       // console.log((result));
+    })
+</script> -->

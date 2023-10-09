@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch api</title>
+</head>
+<body>
+    <h2>hello conection</h2>
+    <div is="divdata"></div>
+</body>
+</html>
+<script>
+    async function api()
+    {
+        try{
+          let fetchdata= await fetch('https://reqres.in/api/users?page=2')
+           
+          let jdata= fetchdata.json()
+            console.log(jdata)
+           jdata.map((user)=>
+           {
+            let div=document.createElement('div')
+              let img=document.createElement('img')
+              img.src=user.avatar;
+              let name=document.createElement('p')
+              name.innerHTML=`${user.first_name} ${user.last_name}`
+              let email=document.createElement('p')
+              email.innerHTML=user.email;
+              div.append(img,name,email)
+              main.append(div)
+           })
+        }
+        catch(err)
+        {
+            console.log("eror");
+        }
+    }
+   
+ 
+  
+</script>
